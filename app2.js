@@ -24,5 +24,6 @@ web3.eth.getTransactionCount(account1, (err, txCount) => {
   web3.eth.sendSignedTransaction(raw, (err, txHash) => {
     console.log('err:', err, 'txHash:', txHash)
     // Use this txHash to find the contract on Etherscan!
+    //0xbadc0f46bbfcfe2a94717c33190d0dcf27304f055fee8ed05aa24c391eef7e2b
   })
 })
