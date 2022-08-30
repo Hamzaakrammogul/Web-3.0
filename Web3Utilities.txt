@@ -1,0 +1,52 @@
+This lesson is designed to show you some cool tips and tricks that you might not know about Web3.js! Let's go ahead and set up the app.js and jump into examining these tips. Let's connect to the Ethereum main net like this:
+
+const Web3 = require('web3')
+const web3 = new Web3('https://mainnet.infura.io/YOUR_INFURA_API_KEY')
+First, you can actually get the average gas price currently for the network like this:
+
+web3.eth.getGasPrice().then((result) => {
+  console.log(web3.utils.fromWei(result, 'ether')
+})
+If you've developed on the blockchain before, you have probably dealt with hashing functions. Web3.js has a lot of built in helpers for using hashing functions. You have direct access to the sha3 function like this:
+
+console.log(web3.utils.sha3('Dapp University'))
+Or as keccack256:
+
+console.log(web3.utils.keccak256('Dapp University'))
+You can also handle (pseudo) randomness by generating a 32 byte random hex like this:
+
+console.log(web3.utils.randomHex(32))
+Have you ever found yourself trying to perform an action on a JavaScript array or object, and needed the help of an external library? Thankfully, Web3.js ships with the underscoreJS library:
+
+const _ = web3.utils._
+_.each({ key1: 'value1', key2: 'value2' }, (value, key) => {
+  console.log(key)
+})
+And that's it! Those are some fancy tips and tricks you can use with Web3.js. Here is the complete tutorial code for this lesson:
+
+const Web3 = require('web3')
+const web3 = new Web3('https://mainnet.infura.io/YOUR_INFURA_API_KEY')
+
+// Get average gas price in wei from last few blocks median gas price
+web3.eth.getGasPrice().then((result) => {
+  console.log(web3.utils.fromWei(result, 'ether')
+})
+
+// Use sha256 Hashing function
+console.log(web3.utils.sha3('Dapp University'))
+
+// Use keccak256 Hashing function (alias)
+console.log(web3.utils.keccak256('Dapp University'))
+
+// Get a Random Hex
+console.log(web3.utils.randomHex(32))
+
+// Get access to the underscore JS library
+const _ = web3.utils._
+
+_.each({ key1: 'value1', key2: 'value2' }, (value, key) => {
+  console.log(key)
+})
+Now you can run the app.js file from your terminal with NodeJS like this:
+
+$ node app.js
